@@ -2,9 +2,19 @@
   (onLogin)="onLogin($event)"
 ></app-login>
 
-<app-conact-list
-  *ngIf="isLoggedIn === true"
-  [list]="contactList"
-></app-conact-list>
+<div *ngIf="isLoggedIn === true">
+
+  <app-conact-list
+    *ngIf="isCreating === false"
+    [list]="contactList"
+    (newContact)="newContact()"
+  ></app-conact-list>
+
+  <app-contact-input
+    *ngIf="isCreating === true"
+    (onCancel)="cancelCreate()"
+  ></app-contact-input>
+
+</div>
 
 
